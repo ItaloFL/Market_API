@@ -11,21 +11,48 @@ generator client {
 }
 
 model User {
-  id            String  @id @default(uuid())
-  name          String  
-  email         String @unique
-  password      String
-  number_phone  String @unique
-  DDD           String
-  adress        String
-  number_house  String
-  CEP           String
-  CPF           String @unique
+  id              String   @id @default(uuid())
+  name            String
+  email           String   @unique
+  password        String
+  number_phone    String   @unique
+  DDD             String
+  adress          String
+  number_house    String
+  CEP             String
+  CPF             String   @unique
   data_nascimento String
-  genero        String
-  photo         String
-  createdAt     DateTime @default(now()) @map("created_at")
-  updateAt      DateTime @default(now()) @map("updated_at")
+  genero          String
+  photo           String
+  createdAt       DateTime @default(now()) @map("created_at")
+  updateAt        DateTime @default(now()) @map("updated_at")
 
   @@map("users")
+}
+
+model Product {
+  id          String @id @default(uuid())
+  name        String
+  description String
+  marcaID     Marca  @relation(fields: [marca_id], references: [id])
+  marca_id    String
+  quantity    Int
+  valor       Int
+  photo       String
+  createAt    DateTime  @default(now()) @map("created_at")
+  updatedAt   DateTime  @default(now()) @map("updated_at")
+
+  @@map("products")
+}
+
+model Marca {
+  id          String @id @default(uuid())
+  name        String  
+  description String
+  createAt    DateTime @default(now()) @map("created_at")
+  updateAt    DateTime @default(now()) @map("updated_at")
+
+
+  @@map("marca")
+  Product Product[]
 }

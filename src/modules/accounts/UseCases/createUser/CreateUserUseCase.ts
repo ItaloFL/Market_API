@@ -1,3 +1,4 @@
+import { hash } from "bcryptjs";
 import { client } from "../../../../prisma/client";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 
@@ -17,11 +18,13 @@ export class CreateUserUseCase{
       throw new Error("Usuario existente!")
     }
 
+    const passwordHash = await hash(password, 8)
+
     const user = await client.user.create({
       data: {
         name,
         email,
-        password,
+        password: passwordHash,
         CEP,
         CPF,
         DDD,
