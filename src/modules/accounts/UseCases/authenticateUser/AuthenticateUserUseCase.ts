@@ -1,7 +1,6 @@
 import { client } from "../../../../prisma/client";
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
-import { userRoutes } from "../../../../shared/infra/http/routes/users.routes";
 
 
 export class AuthenticateUserUseCase{

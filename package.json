@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "tsnd src/shared/infra/server.ts"
+    "dev": "tsnd --inspect --transpile-only --ignore-watch node_modules src/shared/infra/server.ts"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",

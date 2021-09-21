@@ -8,6 +8,7 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch"]
 }
 
 model User {
@@ -32,11 +33,10 @@ model User {
 
 model Product {
   id          String @id @default(uuid())
-  name        String
+  name        String @unique
   description String
   marcaID     Marca  @relation(fields: [marca_id], references: [id])
   marca_id    String
-  quantity    Int
   valor       Int
   photo       String
   createAt    DateTime  @default(now()) @map("created_at")
@@ -47,12 +47,14 @@ model Product {
 
 model Marca {
   id          String @id @default(uuid())
-  name        String  
+  name        String  @unique
   description String
   createAt    DateTime @default(now()) @map("created_at")
   updateAt    DateTime @default(now()) @map("updated_at")
-
+  
 
   @@map("marca")
   Product Product[]
 }
+
+

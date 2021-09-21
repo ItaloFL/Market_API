@@ -23,7 +23,7 @@ export default function ensureAuthenticate(request: Request, response: Response,
     ) as IPayLoad
 
     request.user = {
-      id: user_id
+      id: user_id,  
     }
 
     next()
