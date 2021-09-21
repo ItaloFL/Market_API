@@ -1,4 +1,5 @@
 import { client } from "../../../../prisma/client";
+import { AppError } from "../../../../shared/infra/errors/AppError";
 import { ICreateProductDTO } from "../../dtos/ICreateProductDTO";
 
 
@@ -16,7 +17,7 @@ export class CreateProductUseCase{
     })
 
     if(verifyIfProductExist){
-      throw new Error("Produto já existente")
+      throw new AppError("Produto já existente")
     }
 
     const product = await client.product.create({

@@ -2,6 +2,7 @@ import { client } from "../../../../prisma/client";
 
 interface IUpdateUser{
 
+  id?: string
   email?: string
   data_nascimento?: string
   number_house?: string
@@ -9,17 +10,15 @@ interface IUpdateUser{
   number_phone?: string
   genero?: string
   CEP?: string
-  
-
 }
 
 export class UpdateUserUseCase{
 
-  async execute({ CEP, adress,data_nascimento, email, genero, number_house, number_phone }: IUpdateUser){
+  async execute({ id, CEP, adress,data_nascimento, email, genero, number_house, number_phone }: IUpdateUser){
 
     const updateUser = await client.user.update({
       where: {
-        email,
+        id,
       },
       data: {
         CEP,
@@ -28,7 +27,6 @@ export class UpdateUserUseCase{
         number_phone,
         number_house,
         genero,
-        email
       }
     })
     

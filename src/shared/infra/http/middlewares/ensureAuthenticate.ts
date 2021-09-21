@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
+import { AppError } from "../../errors/AppError";
 
 interface IPayLoad{
   sub: string
@@ -11,7 +12,7 @@ export default function ensureAuthenticate(request: Request, response: Response,
   const authHeader = request.headers.authorization
 
   if(!authHeader){
-    throw new Error("Token faltando ou invalido!")
+    throw new AppError("Token faltando ou invalido!")
   }
 
   const [, token] = authHeader.split(" ")
@@ -28,6 +29,6 @@ export default function ensureAuthenticate(request: Request, response: Response,
 
     next()
   } catch{
-    throw new Error("Token invalido")
+    throw new AppError("Token invalido")
   }
 }

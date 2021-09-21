@@ -7,7 +7,7 @@ export class UpdateProductController{
 
   async handle(request: Request, response: Response): Promise<Response>{
 
-    const { id } = request.user
+    const { id } = request.params
 
     const { 
       name,

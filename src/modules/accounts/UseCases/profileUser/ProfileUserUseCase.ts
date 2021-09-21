@@ -9,7 +9,7 @@ export class ProfileUserUseCase{
     const user = await client.user.findUnique({
       where:{
         id
-      }
+      },
     })
     
     return UserMap.toDTO(user)

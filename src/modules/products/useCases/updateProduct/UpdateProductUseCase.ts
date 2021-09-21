@@ -13,7 +13,7 @@ interface IUpdateProduct{
 
 export class UpdateProductUseCase{
 
-  async execute({ id, name,description, valor, photo }: IUpdateProduct): Promise<Product>{
+  async execute({ id, name ,description, valor, photo }: IUpdateProduct): Promise<Product>{
 
     const updateProduct = await client.product.update({
       where: {

@@ -1,5 +1,6 @@
 import { hash } from "bcryptjs";
 import { client } from "../../../../prisma/client";
+import { AppError } from "../../../../shared/infra/errors/AppError";
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 
 
@@ -15,7 +16,7 @@ export class CreateUserUseCase{
     })
 
     if(VerifyIfUserExist){
-      throw new Error("Usuario existente!")
+      throw new AppError("Usuario existente!")
     }
 
     const passwordHash = await hash(password, 8)
@@ -34,7 +35,7 @@ export class CreateUserUseCase{
         number_house,
         number_phone,
         photo,
-      }
+      },
     })
 
     return user

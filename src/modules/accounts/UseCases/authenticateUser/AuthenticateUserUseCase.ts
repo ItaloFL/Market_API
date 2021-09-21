@@ -1,6 +1,7 @@
 import { client } from "../../../../prisma/client";
 import { compare } from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
+import { AppError } from "../../../../shared/infra/errors/AppError";
 
 
 export class AuthenticateUserUseCase{
@@ -14,13 +15,13 @@ export class AuthenticateUserUseCase{
     })
 
     if(!verifyIfUserExist){
-      throw new Error("Usuario ou senha incorretos")
+      throw new AppError("Usuario ou senha incorretos")
     }
 
     const pass = await compare(password, verifyIfUserExist.password)
 
     if(!pass){
-      throw new Error("Usuario ou senha incorretos")
+      throw new AppError("Usuario ou senha incorretos")
     }
 
 

@@ -1,4 +1,5 @@
 import { client } from "../../../../prisma/client";
+import { AppError } from "../../../../shared/infra/errors/AppError";
 
 
 interface IMarcaDTO{
@@ -17,7 +18,7 @@ export class CreateMarcaUseCase{
     })
 
     if(verifyIfMarcaExist){
-      throw new Error("Marca Existente!")
+      throw new AppError("Marca Existente!")
     }
 
     const marca = await client.marca.create({

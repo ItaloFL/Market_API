@@ -2,6 +2,7 @@ import { Router } from "express";
 import { CreateUserController } from "../../../../modules/accounts/UseCases/createUser/CreateUserController";
 import { ProfileUserController } from "../../../../modules/accounts/UseCases/profileUser/ProfileUserController";
 import { UpdateUserController } from "../../../../modules/accounts/UseCases/updateUser/UpdateUserController";
+import ensureAuthenticate from "../middlewares/ensureAuthenticate";
 
 const userRoutes = Router()
 
@@ -11,7 +12,7 @@ const updateUserController = new UpdateUserController()
 
 userRoutes.post("/users", createUserController.handle)
 userRoutes.get("/profile", profileUserController.handle)
-userRoutes.put("/update", updateUserController.handle)
+userRoutes.put("/update/:id", ensureAuthenticate, updateUserController.handle)
 
 
 export { userRoutes }

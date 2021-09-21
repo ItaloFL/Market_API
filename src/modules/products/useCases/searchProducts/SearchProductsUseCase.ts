@@ -1,4 +1,5 @@
 import { client } from "../../../../prisma/client";
+import { AppError } from "../../../../shared/infra/errors/AppError";
 
 interface IRequest{
   name: string
@@ -16,7 +17,7 @@ export class SearchProductUseCase{
     })
 
     if(!verifyIfProductExist){
-      throw new Error("Produto não encontrado")
+      throw new AppError("Produto não encontrado")
     }
 
     const product = await client.product.findMany({

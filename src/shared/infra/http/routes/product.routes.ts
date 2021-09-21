@@ -15,7 +15,7 @@ const updateProductController = new UpdateProductController()
 
 productRoutes.post("/product", createProductController.handle)
 productRoutes.get("/product", listProductController.handle)
-productRoutes.put("/product",ensureAuthenticate, updateProductController.handle)
+productRoutes.put("/product/:id",ensureAuthenticate, updateProductController.handle)
 
 
 export { productRoutes }
