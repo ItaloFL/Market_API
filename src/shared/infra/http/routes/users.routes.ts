@@ -11,7 +11,7 @@ const profileUserController = new ProfileUserController()
 const updateUserController = new UpdateUserController()
 
 userRoutes.post("/users", createUserController.handle)
-userRoutes.get("/profile", profileUserController.handle)
+userRoutes.get("/profile/:id", ensureAuthenticate ,profileUserController.handle)
 userRoutes.put("/update/:id", ensureAuthenticate, updateUserController.handle)
 
 

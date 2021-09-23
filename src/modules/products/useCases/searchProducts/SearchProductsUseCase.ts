@@ -24,7 +24,8 @@ export class SearchProductUseCase{
       where: {
         
       }
-    })
+    }) 
 
+    return product
   }
 }

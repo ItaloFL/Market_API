@@ -13,8 +13,8 @@ const listProductController = new ListProductController()
 const updateProductController = new UpdateProductController()
 
 
-productRoutes.post("/product", createProductController.handle)
-productRoutes.get("/product", listProductController.handle)
+productRoutes.post("/product", ensureAuthenticate,createProductController.handle)
+productRoutes.get("/product", ensureAuthenticate ,listProductController.handle)
 productRoutes.put("/product/:id",ensureAuthenticate, updateProductController.handle)
 
 
