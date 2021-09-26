@@ -1,3 +1,4 @@
+import { Product } from ".prisma/client";
 import { client } from "../../../../prisma/client";
 import { AppError } from "../../../../shared/infra/errors/AppError";
 
@@ -8,7 +9,7 @@ interface IRequest{
 export class SearchProductUseCase{
 
 
-  async execute({ name }: IRequest){
+  async execute({ name }: IRequest): Promise<Product[]>{
 
     const verifyIfProductExist = await client.product.findUnique({
       where: {

@@ -1,3 +1,4 @@
+import { Marca } from ".prisma/client";
 import { client } from "../../../../prisma/client";
 import { AppError } from "../../../../shared/infra/errors/AppError";
 
@@ -9,7 +10,7 @@ interface IMarcaDTO{
 
 export class CreateMarcaUseCase{
 
-  async execute({ name, description }: IMarcaDTO){
+  async execute({ name, description }: IMarcaDTO): Promise<Marca>{
 
     const verifyIfMarcaExist = await client.marca.findUnique({
       where: {

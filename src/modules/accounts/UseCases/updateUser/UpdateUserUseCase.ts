@@ -1,3 +1,4 @@
+import { User } from ".prisma/client";
 import { client } from "../../../../prisma/client";
 
 interface IUpdateUser{
@@ -14,7 +15,7 @@ interface IUpdateUser{
 
 export class UpdateUserUseCase{
 
-  async execute({ id, CEP, adress,data_nascimento, email, genero, number_house, number_phone }: IUpdateUser){
+  async execute({ id, CEP, adress,data_nascimento, email, genero, number_house, number_phone }: IUpdateUser): Promise<User>{
 
     const updateUser = await client.user.update({
       where: {

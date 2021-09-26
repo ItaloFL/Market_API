@@ -1,3 +1,4 @@
+import { Product } from ".prisma/client";
 import { client } from "../../../../prisma/client";
 import { AppError } from "../../../../shared/infra/errors/AppError";
 import { ICreateProductDTO } from "../../dtos/ICreateProductDTO";
@@ -7,7 +8,7 @@ import { ICreateProductDTO } from "../../dtos/ICreateProductDTO";
 
 export class CreateProductUseCase{
 
-  async execute({ id, name, description, marca_id, valor, photo }: ICreateProductDTO){
+  async execute({ id, name, description, marca_id, valor, photo }: ICreateProductDTO): Promise<Product>{
 
 
     const verifyIfProductExist = await client.product.findUnique({

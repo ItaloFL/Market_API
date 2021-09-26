@@ -1,3 +1,4 @@
+import { User } from ".prisma/client";
 import { hash } from "bcryptjs";
 import { client } from "../../../../prisma/client";
 import { AppError } from "../../../../shared/infra/errors/AppError";
@@ -6,7 +7,7 @@ import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 
 export class CreateUserUseCase{
 
-  async execute({id, name, email, password, CEP, CPF, DDD, adress, data_nascimento, genero, number_house, number_phone, photo}: ICreateUserDTO){
+  async execute({id, name, email, password, CEP, CPF, DDD, adress, data_nascimento, genero, number_house, number_phone, photo}: ICreateUserDTO): Promise<User>{
 
 
     const VerifyIfUserExist = await client.user.findUnique({
