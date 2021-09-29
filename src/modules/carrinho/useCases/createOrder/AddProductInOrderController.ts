@@ -7,7 +7,8 @@ export class AddProductInOrderController{
 
   async handle(request: Request, response: Response): Promise<Response>{
 
-    const { custumer, items } = request.body
+    const { id: custumer } = request.user
+    const { items } = request.body
 
     const addProductInOrderUseCase = new AddProductInOrderUseCase()
 

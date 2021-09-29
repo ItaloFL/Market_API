@@ -11,10 +11,10 @@ export class SearchProductUseCase{
 
   async execute({ name }: IRequest): Promise<Product[]>{
 
-    const verifyIfProductExist = await client.product.findUnique({
+    const verifyIfProductExist = await client.product.findMany({
       where: {
         name
-      }
+      },
     })
 
     if(!verifyIfProductExist){

@@ -13,12 +13,11 @@ export class AddProductInOrderUseCase{
         items
       },
       include: {
-        custumerField: { select: { name: true, email: true, adress: true, number_house: true ,DDD: true, number_phone: true}},
-        itemsField: { include: { marcaID: true }}
-      }
+        custumerField: { select:  { name: true, email: true, adress: true, number_house: true ,DDD: true, number_phone: true}},
+        
+      },
     })
 
     return carrinho
-    
   }
 }
