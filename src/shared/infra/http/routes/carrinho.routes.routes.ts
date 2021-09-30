@@ -8,7 +8,7 @@ const carrinhoRoutes = Router()
 const addProductInOrderController = new AddProductInOrderController()
 const listOrdersController = new ListOrdersController()
 
-carrinhoRoutes.post("/carrinho", ensureAuthenticate, addProductInOrderController.handle)
+carrinhoRoutes.post("/carrinho/:productId", ensureAuthenticate, addProductInOrderController.handle)
 carrinhoRoutes.get("/carrinho/products", ensureAuthenticate, listOrdersController.handle)
 
 

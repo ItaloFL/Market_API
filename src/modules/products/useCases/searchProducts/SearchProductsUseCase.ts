@@ -19,13 +19,17 @@ export class SearchProductUseCase{
 
     if(!verifyIfProductExist){
       throw new AppError("Produto não encontrado")
-    }
-
+    } 
+    
     const product = await client.product.findMany({
       where: {
-        
-      }
-    }) 
+        name: {
+          contains: name,
+        }
+      },
+    })
+
+   
 
     return product
   }

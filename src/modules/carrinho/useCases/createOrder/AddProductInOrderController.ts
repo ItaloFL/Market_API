@@ -8,13 +8,13 @@ export class AddProductInOrderController{
   async handle(request: Request, response: Response): Promise<Response>{
 
     const { id: custumer } = request.user
-    const { items } = request.body
+    const { productId } = request.params
 
     const addProductInOrderUseCase = new AddProductInOrderUseCase()
 
     const carrinho = await addProductInOrderUseCase.execute({
-      custumer,
-      items
+      productId,
+      custumer
     })
     
     return response.json(carrinho)

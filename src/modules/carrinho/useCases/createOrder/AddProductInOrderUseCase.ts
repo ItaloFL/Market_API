@@ -5,17 +5,17 @@ import { ICarrinhoDTO } from "../../dtos/ICarrinhoDTO";
 
 export class AddProductInOrderUseCase{
 
-  async execute({ custumer, items }: ICarrinhoDTO){
+  async execute({ custumer, productId }: ICarrinhoDTO){
 
     const carrinho = await client.carrinho.create({
       data: {
         custumer,
-        items
+        productId
       },
       include: {
-        custumerField: { select:  { name: true, email: true, adress: true, number_house: true ,DDD: true, number_phone: true}},
-        
-      },
+        custumerField: true,
+        Product: true
+      }
     })
 
     return carrinho

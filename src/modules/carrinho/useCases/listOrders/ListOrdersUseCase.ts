@@ -23,15 +23,7 @@ export class ListOrdersUseCase{
             name: true, email: true, adress: true, number_house: true, DDD: true, number_phone: true
           }
         },
-        itemsField: {
-          include: {
-            marcaID: {
-              select: {
-                name: true, description: true
-              }
-            }
-          },
-        },
+        Product: true
       }
     })
 
