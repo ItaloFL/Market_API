@@ -14,7 +14,6 @@ export class SendMailUseCase {
     const user : string = process.env.API_VALIDATION_EMAIL
     const pass : string = process.env.API_VALIDATION_PASSWORD
 
-    console.log(user, pass)
 
     this.client = nodemailer.createTransport(smtpTransport({
       service: 'gmail',

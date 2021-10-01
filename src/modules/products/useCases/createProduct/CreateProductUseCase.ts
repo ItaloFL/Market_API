@@ -8,7 +8,7 @@ import { ICreateProductDTO } from "../../dtos/ICreateProductDTO";
 
 export class CreateProductUseCase{
 
-  async execute({ id, name, description, marca_id, valor, photo }: ICreateProductDTO): Promise<Product>{
+  async execute({ id, name, description, marca_id, valor, photo, category_id }: ICreateProductDTO): Promise<Product>{
 
 
     const verifyIfProductExist = await client.product.findUnique({
@@ -26,6 +26,7 @@ export class CreateProductUseCase{
         name,
         description,
         marca_id,
+        category_id,
         valor,
         photo,
       }

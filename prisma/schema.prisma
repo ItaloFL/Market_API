@@ -14,14 +14,14 @@ generator client {
 model User {
   id              String   @id @default(uuid())
   name            String
-  email           String @unique
+  email           String   @unique
   password        String
-  number_phone    String @unique
+  number_phone    String   @unique
   DDD             String
   adress          String
   number_house    String
   CEP             String
-  CPF             String @unique
+  CPF             String   @unique
   data_nascimento String
   genero          String
   photo           String
@@ -39,6 +39,8 @@ model Product {
   description String
   marcaID     Marca    @relation(fields: [marca_id], references: [id])
   marca_id    String
+  category_id String   
+  category    Category @relation(fields: [category_id], references: [id])
   valor       Int
   photo       String
   createAt    DateTime @default(now()) @map("created_at")
@@ -71,4 +73,14 @@ model Carrinho {
   Product   Product[] @relation(fields: [productId], references: [id])
   productId String?
   @@map("carrinho")
+}
+
+model Category {
+  id              String    @id @default(uuid())
+  name            String    @unique
+  description     String
+  creatadAt       DateTime @default(now())
+
+  Product Product[]
+  @@map("category")
 }

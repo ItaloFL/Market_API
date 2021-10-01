@@ -11,6 +11,7 @@ export class CreateProductController{
       name,
       description,
       marca_id,
+      category_id,
       valor,
       photo, 
     } = request.body
@@ -21,6 +22,7 @@ export class CreateProductController{
       name,
       description,
       marca_id,
+      category_id,
       valor,
       photo, 
     })
