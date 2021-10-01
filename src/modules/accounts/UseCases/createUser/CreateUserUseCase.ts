@@ -7,7 +7,7 @@ import { ICreateUserDTO } from "../../dtos/ICreateUserDTO";
 
 export class CreateUserUseCase{
 
-  async execute({id, name, email, password, CEP, CPF, DDD, adress, data_nascimento, genero, number_house, number_phone, photo}: ICreateUserDTO): Promise<User>{
+  async execute({ name, email, password, CEP, CPF, DDD, adress, data_nascimento, genero, number_house, number_phone, photo}: ICreateUserDTO): Promise<User>{
 
 
     const VerifyIfUserExist = await client.user.findUnique({
@@ -18,6 +18,10 @@ export class CreateUserUseCase{
 
     if(VerifyIfUserExist){
       throw new AppError("Usuario existente!")
+    }
+
+    if(password.length < 8){
+      throw new AppError("Senha com poucos caracteres!")
     }
 
     const passwordHash = await hash(password, 8)

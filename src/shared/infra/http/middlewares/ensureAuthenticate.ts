@@ -20,7 +20,7 @@ export default function ensureAuthenticate(request: Request, response: Response,
   try {
     const { sub: user_id } = verify(
       token,
-      "c1c16452b04650ea34d1463da2739f3b"
+      process.env.API_KEY_AUTHENTICATE
     ) as IPayLoad
 
     request.user = {

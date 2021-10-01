@@ -15,7 +15,7 @@ interface IUpdateUser{
 
 export class UpdateUserUseCase{
 
-  async execute({ id, CEP, adress,data_nascimento, email, genero, number_house, number_phone }: IUpdateUser): Promise<User>{
+  async execute({ id, CEP, adress,data_nascimento, genero, number_house, number_phone }: IUpdateUser): Promise<User>{
 
     const updateUser = await client.user.update({
       where: {

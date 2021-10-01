@@ -25,7 +25,7 @@ export class AuthenticateUserUseCase{
     }
 
 
-    const token = sign({}, "c1c16452b04650ea34d1463da2739f3b", {
+    const token = sign({}, process.env.API_KEY_AUTHENTICATE, {
       subject: verifyIfUserExist.id,
       expiresIn: "1d"
     })

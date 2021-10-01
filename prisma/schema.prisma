@@ -14,14 +14,14 @@ generator client {
 model User {
   id              String   @id @default(uuid())
   name            String
-  email           String
+  email           String @unique
   password        String
-  number_phone    String
+  number_phone    String @unique
   DDD             String
   adress          String
   number_house    String
   CEP             String
-  CPF             String
+  CPF             String @unique
   data_nascimento String
   genero          String
   photo           String
@@ -30,7 +30,6 @@ model User {
 
   Carrinho Carrinho[]
 
-  @@unique([email, number_phone, CPF])
   @@map("users")
 }
 

@@ -7,7 +7,7 @@ export class SendMailController{
 
   async handle(request: Request, response: Response): Promise<Response>{
 
-    const { email }  = request.body
+    const { email } = request.body
 
     const sendMailUseCase = new SendMailUseCase()
 
