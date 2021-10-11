@@ -25,7 +25,8 @@ export class SearchProductUseCase{
       where: {
         name: {
           contains: name,
-        }
+          mode: 'insensitive',
+        },
       },
     })
 

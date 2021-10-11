@@ -9,24 +9,18 @@ export class SearchProductsByCategoryUseCase{
 
   async execute({ name }: IRequest){
 
-    const products = await client.product.findMany({
+    const products = await client.category.findMany({
       where: {
-       category: {
-         name: {
-           contains: name,
-           mode: 'insensitive'
-         }
-       }
+        name: {
+          contains: name,
+          mode: 'insensitive'
+        }
       },
       include: {
-        category: {
-          select: {
-            name: true, description: true, creatadAt: true
-          }
-        }
+        Product: true
       }
-    }) 
-    
+    })
+
     return products
   }
 }

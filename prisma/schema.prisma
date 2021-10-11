@@ -30,6 +30,7 @@ model User {
 
   Carrinho Carrinho[]
 
+  RefreshToken RefreshToken[]
   @@map("users")
 }
 
@@ -39,7 +40,7 @@ model Product {
   description String
   marcaID     Marca    @relation(fields: [marca_id], references: [id])
   marca_id    String
-  category_id String   
+  category_id String
   category    Category @relation(fields: [category_id], references: [id])
   valor       Int
   photo       String
@@ -70,17 +71,29 @@ model Carrinho {
   createdAt     DateTime @default(now()) @map("created_at")
 
 
-  Product   Product[] @relation(fields: [productId], references: [id])
-  productId String?
+  Product   Product @relation(fields: [productId], references: [id])
+  productId String
   @@map("carrinho")
 }
 
 model Category {
-  id              String    @id @default(uuid())
-  name            String    @unique
-  description     String
-  creatadAt       DateTime @default(now())
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String
+  creatadAt   DateTime @default(now())
 
   Product Product[]
   @@map("category")
+}
+
+model RefreshToken {
+  id         String   @id @default(uuid())
+  user_id    String
+  user       User     @relation(fields: [user_id], references: [id])
+  expires_in DateTime
+  createdAt  DateTime @default(now())
+
+
+  userId String
+  @@map("refresh_token")
 }

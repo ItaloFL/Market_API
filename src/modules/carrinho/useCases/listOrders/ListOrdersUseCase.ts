@@ -13,20 +13,16 @@ export class ListOrdersUseCase{
 
     const carrinho = await client.carrinho.findMany({
       where: {
-        custumerField:{
-          id,
-        },
+        id
       },
       include: {
-        custumerField: {
-          select :{
-            name: true, email: true, adress: true, number_house: true, DDD: true, number_phone: true
-          }
-        },
-        Product: true
+        custumerField: true,
+        Product: true,
       }
     })
 
-    return carrinho
+    
+
+    return { carrinho }
   }
 }

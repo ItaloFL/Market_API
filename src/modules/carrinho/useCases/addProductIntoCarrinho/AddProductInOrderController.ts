@@ -13,8 +13,8 @@ export class AddProductInOrderController{
     const addProductInOrderUseCase = new AddProductInOrderUseCase()
 
     const carrinho = await addProductInOrderUseCase.execute({
-      productId,
-      custumer
+      custumer,
+      productId
     })
     
     return response.json(carrinho)

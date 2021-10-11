@@ -22,9 +22,9 @@ const searchProductsByCategoryController = new SearchProductsByCategoryControlle
 productRoutes.post("/product", ensureAuthenticate, createProductController.handle)
 productRoutes.get("/product", ensureAuthenticate , listProductController.handle)
 productRoutes.put("/product/:id",ensureAuthenticate, updateProductController.handle)
-productRoutes.get("/product/search/:name", ensureAuthenticate, searchProductController.handle)
-productRoutes.get("/products/search/:name", ensureAuthenticate, searchProductsByMarcaController.handle)
-productRoutes.get("/products/searchh/:name", ensureAuthenticate, searchProductsByCategoryController.handle)
+productRoutes.get("/products/search/:name", ensureAuthenticate, searchProductController.handle)
+productRoutes.get("/products/search/marca/:name", ensureAuthenticate, searchProductsByMarcaController.handle)
+productRoutes.get("/products/search/category/:name", ensureAuthenticate, searchProductsByCategoryController.handle)
 
 
 export { productRoutes }
