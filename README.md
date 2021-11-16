@@ -56,3 +56,4 @@ O **Projeto** foi desenvolvido com as seguintes tecnologias:
 Ítalo Ferreira Lopes
 
 - 🎫 [GitHub](https://github.com/ItaloFL)
+- 🎫 [Linkedin](https://www.linkedin.com/in/italo-ferreira-598223223/)
